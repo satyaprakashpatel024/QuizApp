@@ -10,9 +10,10 @@ const jwtAuth = (req, res, next) => {
             message: 'No Token Provided'
         });
     }
+    const SECRET = "SECRET";
 
     try {
-        const payload = JWT.verify(token, process.env.SECRET);
+        const payload = JWT.verify(token, SECRET);
         // console.log(payload,'payload');
         req.user = { id: payload._id, email: payload.email };
         // console.log(req.user,'req.user');

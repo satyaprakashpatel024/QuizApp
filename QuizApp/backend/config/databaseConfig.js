@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGODB_URL = process.env.MONGODB_URL;
+const MONGODB_URL = "mongodb+srv://QuizAdmin:WynvDusSy2WG6KzX@quizcluster.hhuofk9.mongodb.net/QUIZ_DATABASE";
 
 const connectDatabase = ()=>{
     mongoose.connect(MONGODB_URL)

@@ -67,7 +67,7 @@ const signin = async (req, res, next) => {
             .findOne({
                 email: email
             }).select('+password')
-
+        // console.log(user);
         if (!user || (!await bcrypt.compare(password,user.password))) {
             return res.status(400).json({
                 success: false,
@@ -91,7 +91,7 @@ const signin = async (req, res, next) => {
     } catch (error) {
         res.status(400).json({
             success: false,
-            message: e.message
+            message: error.message
         })
     }
 }

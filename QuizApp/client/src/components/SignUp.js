@@ -10,7 +10,7 @@ function SignUp() {
     password: "",
     confirmPassword: ""
   });
-  const URL = process.env.REACT_APP_URL;
+  const URL ="http://localhost:5000";
 
   async function handleSignUp(e) {
     e.preventDefault(); // event.preventDefault() method to prevent the default behavior of an HTML form submission
@@ -30,7 +30,7 @@ function SignUp() {
       }
       setLoading(false);
     } catch (error) {
-      alert(error.response.data.message);
+      alert(error.response);
       setLoading(false);
     }
   }
@@ -38,7 +38,7 @@ function SignUp() {
   return (
     <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 m-4">
       <form className="space-y-6" onSubmit={(e) => handleSignUp(e)}>
-        <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+        <h5 className="text-xl font-medium text-gray-900">
           SignUp to our platform
         </h5>
 

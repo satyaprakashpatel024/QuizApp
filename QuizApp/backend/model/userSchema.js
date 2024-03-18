@@ -50,7 +50,7 @@ userSchema.methods = {
             _id: this._id, 
             email: this.email 
         }, 
-        process.env.SECRET, 
+        "SECRET", 
         { 
             expiresIn: "24h" 
         });
