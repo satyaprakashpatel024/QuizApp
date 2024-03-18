@@ -19,14 +19,6 @@ export const DataProvider = ({children}) => {
   // Load JSON Data
   useEffect(() => {
     setQuizs(data);
-    // fetch('quiz.json')
-    //   .then((res) => {
-    //     res.json()
-    //   })
-    //   .then(data => {
-    //     setQuizs(data)
-    //     console.log(data);
-    //   })
   }, []);
 
   // Set a Single Question
