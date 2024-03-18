@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import CoverPage from './CoverPage';
 function ForgotPassword() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -31,6 +31,7 @@ function ForgotPassword() {
   }
 
   return (
+    <CoverPage>
     <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 m-4">
       <form className="space-y-6" onSubmit={(e) => handleForgotpassword(e)}>
         <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -101,6 +102,7 @@ function ForgotPassword() {
         {/* singIn */}
       </form>
     </div>
+    </CoverPage>
   );
 }
 

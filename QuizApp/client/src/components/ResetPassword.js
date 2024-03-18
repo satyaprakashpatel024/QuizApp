@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-
+import CoverPage from './CoverPage';
 function ResetPassword() {
   const navigate = useNavigate();
   const { resetPasswordToken } = useParams();
@@ -34,6 +34,7 @@ function ResetPassword() {
   }
 
   return (
+    <CoverPage>
     <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 m-4">
       <form className="space-y-6" onSubmit={(e) => handleResetPassword(e)}>
         <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -129,6 +130,7 @@ function ResetPassword() {
         {/* singIn */}
       </form>
     </div>
+    </CoverPage>
   );
 }
 

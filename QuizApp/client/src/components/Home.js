@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import CoverPage from "./CoverPage.js";
 function Home() {
 	const [loading, setLoading] = useState(false);
 	const [logoutLoading, setLogoutloading] = useState(false);
@@ -53,7 +53,7 @@ function Home() {
 	}
 
 	return (
-		<>
+		<CoverPage>
 			{loading ? (
 				// loading
 				<svg
@@ -109,7 +109,7 @@ function Home() {
 				</>
 				// user details
 			)}
-		</>
+		</CoverPage>
 	);
 }
 
