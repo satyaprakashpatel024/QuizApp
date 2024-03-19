@@ -119,7 +119,6 @@ const logout = (req,res,next)=>{
             expires: new Date(),
             httpOnly : true
         }
-        console.log(res.cookie);
         res.cookie("token",null,cookieOption);
         res.status(200).json({
             success:true,
