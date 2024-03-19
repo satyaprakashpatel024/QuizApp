@@ -119,6 +119,7 @@ const logout = (req,res,next)=>{
             expires: new Date(),
             httpOnly : true
         }
+        console.log(res.cookie);
         res.cookie("token",null,cookieOption);
         res.status(200).json({
             success:true,
@@ -127,7 +128,7 @@ const logout = (req,res,next)=>{
     } catch (error) {
         return res.status(400).json({
             success:false,
-            message:error.message
+            message:`${error.message} user not loggedin`
         })
     }
 }

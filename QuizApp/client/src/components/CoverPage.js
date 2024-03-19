@@ -1,9 +1,13 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import quizLogo from '../Assets/quiz.png';
 import user from '../Assets/user.png';
+import {useState} from 'react';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const navigation = [
 	{ name: "Dashboard", href: "#", current: true },
@@ -16,7 +20,31 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 
+
+
 export default function Example({children}) {
+	const URL = "http://localhost:5000";
+	const [logoutLoading, setLogoutloading] = useState(false);
+	const navigate = useNavigate();
+
+	async function handleLogout() {
+		setLogoutloading(true);
+		try {
+			const response = await axios({
+				method: "get",
+				url: URL + "/api/auth/logout",
+				withCredentials: true,
+			});
+			console.log(response);
+			if (response.data.success) {
+				navigate("/signin");
+			}
+			setLogoutloading(false);
+		} catch (error) {
+			setLogoutloading(false);
+		}
+	}
+
 	return (
 		<div className="w-full h-full flex flex-col">
 			<Disclosure as="nav" className="bg-gray-800">
@@ -86,7 +114,7 @@ export default function Example({children}) {
 											<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 												<Menu.Item>
 													{({ active }) => (
-														<a href="#" className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}>
+														<a href="/home" className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}>
 															Your Profile
 														</a>
 													)}
@@ -100,7 +128,7 @@ export default function Example({children}) {
 												</Menu.Item>
 												<Menu.Item>
 													{({ active }) => (
-														<a href="#" className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}>
+														<a onClick={handleLogout} className={classNames(active ? "bg-gray-100 cursor-pointer" : "", "block px-4 py-2 text-sm cursor-pointer text-gray-700")}>
 															Sign out
 														</a>
 													)}
