@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import DataContext from '../context/dataContext';
-import CoverPage from './CoverPage';
+// import CoverPage from './CoverPage';
 const Quiz = () => {
     const { showQuiz, question, quizs, checkAnswer, correctAnswer,
             selectedAnswer,questionIndex, nextQuestion, showTheResult }  = useContext(DataContext);
 
     return (
-        <CoverPage>
+        // <CoverPage>
         <section className="bg-dark w-full text-white" style={{ display: `${showQuiz ? 'block' : 'none'}` }}>
             <div className="container">
                 <div className="row vh-100 align-items-center justify-content-center">
@@ -39,7 +39,7 @@ const Quiz = () => {
                 </div>
             </div>
         </section>
-        </CoverPage>
+        // </CoverPage>
     );
 };
 
